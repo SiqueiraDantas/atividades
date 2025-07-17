@@ -1,0 +1,43 @@
+<section class="form-professor">
+  <header class="topbar">
+    <h1>📚 Cadastro de Professores</h1>
+  </header>
+  <form id="formProfessor">
+    <div class="form-container">
+      <div class="foto-section">
+        <div class="foto-preview">
+          <img src="../assets/avatar_prof.png" alt="Foto do Professor" id="previewFoto" />
+        </div>
+        <label for="fotoInput" class="trocar-foto">Trocar Foto</label>
+        <input type="file" id="fotoInput" accept="image/*" style="display: none;" />
+      </div>
+
+      <div class="info-section">
+        <label for="nomeProf">Nome completo:</label>
+        <input type="text" id="nomeProf" required />
+
+        <label for="emailProf">Email:</label>
+        <input type="email" id="emailProf" required />
+
+        <label for="senhaProf">Senha:</label>
+        <input type="password" id="senhaProf" required />
+
+        <label for="confirmarSenhaProf">Confirmar Senha:</label>
+        <input type="password" id="confirmarSenhaProf" required />
+
+        <label for="telefoneProf">Telefone:</label>
+        <input type="tel" id="telefoneProf" placeholder="(88) 90000-0000" required />
+
+        <label for="disciplinaProf">Disciplina:</label>
+        <input type="text" id="disciplinaProf" required />
+
+        <button type="submit" id="salvarProfessor">Salvar Professor</button>
+      </div>
+    </div>
+  </form>
+</section>
+
+<section class="professores-lista">
+  <h2>📋 Professores Cadastrados</h2>
+  <ul id="listaProfessores"></ul>
+</section>

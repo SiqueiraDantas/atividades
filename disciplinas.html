@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disciplinas - MIS Educa</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/disciplinas.css" />
+  <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/logo_mis.png" alt="MIS Educa" class="logo-img" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+          <li><a href="perfil.html"><i class="fas fa-user"></i> Meu Perfil</a></li>
+          <li><a href="atividades.html"><i class="fas fa-tasks"></i> Minhas Atividades</a></li>
+          <li><a href="certificados.html"><i class="fas fa-award"></i> Meus Certificados</a></li>
+          <li><a href="disciplinas.html" class="active"><i class="fas fa-book"></i> Disciplinas</a></li>
+          <li><a href="notas.html"><i class="fas fa-clipboard-list"></i> Notas</a></li>
+          <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="content">
+      <h1 class="titulo">📘 Disciplinas Ofertadas</h1>
+      <div class="cards-disciplinas" id="listaDisciplinas"></div>
+    </main>
+  </div>
+
+  <!-- Firebase e Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "SUA_API_KEY",
+      authDomain: "SEU_DOMINIO.firebaseapp.com",
+      projectId: "SEU_PROJECT_ID",
+      storageBucket: "SEU_BUCKET.appspot.com",
+      messagingSenderId: "SEU_SENDER_ID",
+      appId: "SUA_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const lista = document.getElementById("listaDisciplinas");
+
+    async function carregarDisciplinas() {
+      const disciplinasRef = collection(db, "disciplinas");
+      const snapshot = await getDocs(disciplinasRef);
+
+      snapshot.forEach((doc) => {
+        const d = doc.data();
+        const card = document.createElement("div");
+        card.className = "card-disciplina";
+
+        card.innerHTML = `
+          <img src="${d.imagem}" alt="${d.nome}">
+          <div class="card-conteudo">
+            <h3>${d.nome}</h3>
+            <p><strong>Professor:</strong> ${d.professor}</p>
+            <p><strong>Dias:</strong> ${d.dias}</p>
+            <p><strong>Horário:</strong> ${d.horario}</p>
+            <p><strong>Objetivo:</strong> ${d.objetivo}</p>
+            <button onclick="verMais('${d.nome}')">Ver Mais</button>
+          </div>
+        `;
+        lista.appendChild(card);
+      });
+    }
+
+    carregarDisciplinas();
+
+    window.verMais = function(nome) {
+      alert(`Mais detalhes sobre: ${nome}`);
+    };
+  </script>
+
+
+
+</body>
+</html>

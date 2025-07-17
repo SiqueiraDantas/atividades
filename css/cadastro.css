@@ -1,0 +1,128 @@
+:root {
+  --laranja: #F26729;
+  --azul: #1B4B5F;
+  --cinza-claro: #FAFAFA;
+  --branco: #FFFFFF;
+  --preto: #1B1B1B;
+}
+
+.form-professor {
+  padding: 30px;
+}
+
+.form-container {
+  display: flex;
+  gap: 40px;
+  background: var(--branco);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  align-items: flex-start;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.foto-section {
+  text-align: center;
+}
+
+.foto-preview {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 10px;
+  border: 3px solid var(--azul);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.foto-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trocar-foto {
+  display: block;
+  color: var(--laranja);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.info-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-section label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  margin-top: 10px;
+}
+
+.info-section input {
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.info-section button {
+  background-color: var(--laranja);
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.info-section button:hover {
+  background-color: #d5551c;
+}
+
+.professores-lista {
+  max-width: 900px;
+  margin: 40px auto 0;
+  background: var(--branco);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.professores-lista h2 {
+  color: var(--laranja);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+#listaProfessores {
+  list-style: none;
+  padding: 0;
+}
+
+.card-professor {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.card-professor img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.info-professor span {
+  display: block;
+  font-size: 14px;
+  color: #555;
+}

@@ -1,0 +1,55 @@
+.titulo {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--laranja);
+  margin-bottom: 30px;
+}
+
+.tabela-notas {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.linha-nota {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--branco);
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-left: 6px solid var(--azul);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.linha-nota .info {
+  flex-grow: 1;
+}
+
+.linha-nota .nota {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: var(--branco);
+}
+
+.verde { background-color: #4CAF50; }
+.amarelo { background-color: #FFC107; color: #000; }
+.vermelho { background-color: #F44336; }
+
+.linha-nota button {
+  margin-left: 20px;
+  padding: 8px 12px;
+  background-color: var(--laranja);
+  color: var(--branco);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.linha-nota button:hover {
+  background-color: #d6551f;
+}

@@ -1,0 +1,93 @@
+:root {
+  --laranja: #F26729;
+  --azul: #1B4B5F;
+  --cinza-claro: #FAFAFA;
+  --branco: #FFFFFF;
+  --preto: #1B1B1B;
+  --verde: #2ecc71;
+  --vermelho: #e74c3c;
+  --cinza: #999;
+}
+
+.titulo {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--laranja);
+  margin-bottom: 30px;
+}
+
+.certificados-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-certificado {
+  background-color: var(--branco);
+  border-left: 6px solid var(--azul);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-certificado h3 {
+  font-size: 18px;
+  color: var(--preto);
+}
+
+.card-certificado .info {
+  font-size: 14px;
+  color: var(--cinza);
+}
+
+.card-certificado .status {
+  font-weight: bold;
+  font-size: 13px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.status.emitido {
+  background-color: var(--verde);
+  color: white;
+}
+
+.status.pendente {
+  background-color: var(--laranja);
+  color: white;
+}
+
+.status.cancelado {
+  background-color: var(--vermelho);
+  color: white;
+}
+
+.card-certificado .botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.card-certificado button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card-certificado .btn-ver {
+  background-color: var(--azul);
+  color: var(--branco);
+}
+
+.card-certificado .btn-download {
+  background-color: var(--laranja);
+  color: var(--branco);
+}

@@ -1,0 +1,101 @@
+<!-- 🔒 index.html (com Firebase completo e botão sair funcional) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MIS Educa</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/logo_mis.png" alt="MIS Educa" class="logo-img" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+          <li><a href="perfil.html"><i class="fas fa-user"></i> Meu Perfil</a></li>
+          <li><a href="atividades.html"><i class="fas fa-tasks"></i> Minhas Atividades</a></li>
+          <li><a href="certificados.html"><i class="fas fa-award"></i> Meus Certificados</a></li>
+          <li><a href="disciplinas.html"><i class="fas fa-book"></i> Disciplinas</a></li>
+          <li><a href="notas.html"><i class="fas fa-clipboard-list"></i> Notas</a></li>
+          <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div class="welcome">
+          <h1>Bem-vindo(a), Siqueira!</h1>
+        </div>
+        <div class="profile">
+          <i class="fas fa-bell"></i>
+          <img src="../assets/siqueira_ft.jpg" alt="Siqueira Neto" class="avatar" />
+        </div>
+      </header>
+
+      <section class="dashboard">
+        <h2>Painel Geral</h2>
+        <div class="cards">
+          <div class="card destaque">
+            <h3>Disciplinas Ativas</h3>
+            <p>5</p>
+          </div>
+          <div class="card">
+            <h3>Atividades Pendentes</h3>
+            <p>2</p>
+          </div>
+          <div class="card">
+            <h3>Certificados Conquistados</h3>
+            <p>3</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Firebase + Logout -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAGWgkGQglB_uuV0eVnU3FuT0kLe8U7vdw",
+      authDomain: "mis-educa.firebaseapp.com",
+      projectId: "mis-educa",
+      storageBucket: "mis-educa.firebasestorage.app",
+      messagingSenderId: "432559485193",
+      appId: "1:432559485193:web:5c3ad99c601cea0594a3d8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // Verifica se está logado
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    // Logout
+    const logoutBtn = document.querySelector(".logout");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        signOut(auth).then(() => {
+          window.location.href = "login.html";
+        }).catch((error) => {
+          console.error("Erro ao sair:", error.message);
+          alert("Erro ao sair: " + error.message);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

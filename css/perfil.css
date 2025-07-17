@@ -1,0 +1,187 @@
+:root {
+  --laranja: #F26729;
+  --azul: #1B4B5F;
+  --branco: #FFFFFF;
+  --cinza-claro: #FAFAFA;
+}
+
+/* Container geral */
+.container {
+  display: flex;
+}
+
+/* Sidebar já está no style.css principal */
+
+/* Main content */
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--cinza-claro);
+  min-height: 100vh;
+}
+
+/* Caixa de perfil */
+.perfil-box {
+  background: var(--branco);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Título */
+.perfil-box .titulo {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--laranja);
+  margin-bottom: 20px;
+}
+
+/* Área da foto */
+.foto {
+  flex: 1;
+  max-width: 220px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.foto img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--azul);
+  margin-bottom: 10px;
+}
+
+.upload-label {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--laranja);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Formulário */
+#formPerfil {
+  flex: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--azul);
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Botão salvar */
+.btn-salvar {
+  grid-column: span 2;
+  padding: 12px;
+  background-color: var(--laranja);
+  color: var(--branco);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.btn-salvar:hover {
+  background-color: #d4551f;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .perfil-box {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  /* Título menor */
+  .perfil-box .titulo {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  /* Foto mais compacta */
+  .foto {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .foto img {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Form vira uma coluna única */
+  #formPerfil {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn-salvar {
+    width: 100%;
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .perfil-box {
+    padding: 15px;
+  }
+
+  .perfil-box .titulo {
+    font-size: 20px;
+  }
+
+  .foto img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .form-group input {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .btn-salvar {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

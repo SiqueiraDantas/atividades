@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Perfil - MIS Educa</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/perfil.css" />
+
+  <!-- Fontes e ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/logo_mis.png" alt="MIS Educa" class="logo-img" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+          <li><a href="perfil.html" class="active"><i class="fas fa-user"></i> Meu Perfil</a></li>
+          <li><a href="atividades.html"><i class="fas fa-tasks"></i> Minhas Atividades</a></li>
+          <li><a href="certificados.html"><i class="fas fa-award"></i> Meus Certificados</a></li>
+          <li><a href="disciplinas.html"><i class="fas fa-book"></i> Disciplinas</a></li>
+          <li><a href="notas.html"><i class="fas fa-clipboard-list"></i> Notas</a></li>
+          <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Conteúdo principal -->
+    <main class="content">
+      <div class="perfil-box">
+        <h2 class="titulo">Meu Perfil</h2>
+
+        <div class="foto">
+          <img src="../assets/siqueira_ft.jpg" alt="Foto de Perfil" id="avatar" onerror="this.src='../assets/foto_padrao.png'">
+          <label for="upload-foto" class="upload-label">Trocar Foto</label>
+          <input type="file" id="upload-foto" hidden>
+        </div>
+
+        <form id="formPerfil">
+          <div class="form-group">
+            <label>Nome completo:</label>
+            <input type="text" id="nome" value="Siqueira Neto" />
+          </div>
+
+          <div class="form-group">
+            <label>Email:</label>
+            <input type="email" id="email" value="siqueira@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label>Telefone:</label>
+            <input type="tel" id="telefone" placeholder="(88) 90000-0000" />
+          </div>
+
+          <div class="form-group">
+            <label>Nova senha:</label>
+            <input type="password" id="senha" />
+          </div>
+
+          <div class="form-group">
+            <label>Confirmar nova senha:</label>
+            <input type="password" id="confirmaSenha" />
+          </div>
+
+          <button type="submit" class="btn-salvar">Salvar Alterações</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <!-- Script -->
+  <script src="../js/perfil.js"></script>
+
+<!-- Firebase Logout Script (universal para todas as páginas) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "SUA_API_KEY",
+    authDomain: "SEU_DOMINIO.firebaseapp.com",
+    projectId: "SEU_PROJECT_ID",
+    storageBucket: "SEU_BUCKET.appspot.com",
+    messagingSenderId: "SEU_SENDER_ID",
+    appId: "SUA_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Botão "Sair"
+  const btnSair = document.querySelector(".logout");
+  if (btnSair) {
+    btnSair.addEventListener("click", (e) => {
+      e.preventDefault();
+      signOut(auth)
+        .then(() => window.location.href = "login.html")
+        .catch((error) => alert("Erro ao sair: " + error.message));
+    });
+  }
+</script>
+
+
+</body>
+</html>

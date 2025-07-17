@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Administrador - MIS Educa</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar" style="background-color: #FFFFFF;">
+      <div class="logo">
+        <img src="../assets/logo_mis.png" alt="MIS Educa" class="logo-img" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" data-page="dashboard" class="active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+          <li><a href="#" data-page="cadastro"><i class="fas fa-user-plus"></i> Cadastro Professores</a></li>
+          <li><a href="#" data-page="cadastro_atividades"><i class="fas fa-tasks"></i> Cadastro Atividades</a></li>
+          <li><a href="#" data-page="gerar_certificados"><i class="fas fa-award"></i> Gerar Certificados</a></li>
+          <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="content" id="main-content">
+      <section class="admin-panel">
+        <h2 class="titulo">🔐 Selecione uma Ação no Menu Lateral</h2>
+        <p>Use o menu à esquerda para acessar funções administrativas como cadastro de professores, atividades e geração de certificados.</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Script de controle -->
+  <script type="module" src="../js/admin.js"></script>
+</body>
+</html>

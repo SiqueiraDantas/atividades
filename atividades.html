@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minhas Atividades - MIS Educa</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/atividades.css" />
+
+  <!-- Fontes e ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../assets/logo_mis.png" alt="MIS Educa" class="logo-img" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+          <li><a href="perfil.html"><i class="fas fa-user"></i> Meu Perfil</a></li>
+          <li><a href="atividades.html" class="active"><i class="fas fa-tasks"></i> Minhas Atividades</a></li>
+          <li><a href="certificados.html"><i class="fas fa-award"></i> Meus Certificados</a></li>
+          <li><a href="disciplinas.html"><i class="fas fa-book"></i> Disciplinas</a></li>
+          <li><a href="notas.html"><i class="fas fa-clipboard-list"></i> Notas</a></li>
+          <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Conteúdo -->
+    <main class="content">
+      <h1 class="titulo">Minhas Atividades</h1>
+
+      <div class="cards-atividades" id="listaAtividades">
+        <!-- Os cards de atividades serão inseridos aqui dinamicamente via JS -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Script de funcionalidades -->
+  <script src="../js/atividades.js"></script>
+
+<!-- Firebase Logout Script (universal para todas as páginas) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "SUA_API_KEY",
+    authDomain: "SEU_DOMINIO.firebaseapp.com",
+    projectId: "SEU_PROJECT_ID",
+    storageBucket: "SEU_BUCKET.appspot.com",
+    messagingSenderId: "SEU_SENDER_ID",
+    appId: "SUA_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Botão "Sair"
+  const btnSair = document.querySelector(".logout");
+  if (btnSair) {
+    btnSair.addEventListener("click", (e) => {
+      e.preventDefault();
+      signOut(auth)
+        .then(() => window.location.href = "login.html")
+        .catch((error) => alert("Erro ao sair: " + error.message));
+    });
+  }
+</script>
+
+
+</body>
+</html>
